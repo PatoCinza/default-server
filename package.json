@@ -6,5 +6,23 @@
     "express": "^4.17.1",
     "mongodb": "^3.6.2",
     "nodemon": "^2.0.4"
-  }
+  },
+  "version": "0.0.1",
+  "devDependencies": {},
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PatoCinza/default-server.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PatoCinza/default-server/issues"
+  },
+  "homepage": "https://github.com/PatoCinza/default-server#readme",
+  "description": ""
 }

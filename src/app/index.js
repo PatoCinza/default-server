@@ -7,7 +7,6 @@ const client = mongodb.MongoClient
 const config = require('./config')()
 
 const initServer = (config, routeBuilder) => {
-  console.log('[Server] Starting server')
   console.log(`[Server] Server config: ${config}`)
 
   const app = express()

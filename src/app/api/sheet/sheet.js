@@ -1,9 +1,15 @@
-module.exports = function buildSheetRoutes (app) {
+module.exports = function buildSheetRoutes (app, db) {
+  const sheetsCollection = db.collection('sheets')
+
   app.get('/sheet', (req, res) => {
-    res.json({ route: 'sheet' })
+    sheetsCollection.find().toArray()
+      .then(results => res.status(200).json(results))
+      .catch(error => res.json(error))
   })
 
-  app.get('/', (req, res) => {
-    res.json({})
+  app.post('/sheet', (req, res) => {
+    sheetsCollection.insertOne(req.body)
+      .then(result => res.json(result))
+      .catch(error => res.json(error))
   })
 }

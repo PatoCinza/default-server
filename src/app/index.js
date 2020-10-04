@@ -6,23 +6,23 @@ const client = mongodb.MongoClient
 
 const config = require('./config')()
 
-const initServer = (config, routeBuilder) => {
-  console.log(`[Server] Server config: ${config}`)
+const initDatabase = ({ host = '', name = '' }) => {
+  return client.connect(host, { useUnifiedTopology: true })
+    .then(client => {
+      console.log('Connected to Database')
+      return client.db(name)
+    })
+    .catch(error => console.error(error))
+}
 
+const initServer = async (config, routeBuilder) => {
   const app = express()
 
-  client.connect(config.database, function(err) {
-    if(err) {
-      console.log('database is not connected')
-    }
-    else {
-      console.log('connected!!')
-    }
-  })
+  const db = await initDatabase(config.database)
 
   app.use(express.json())
 
-  routeBuilder(app)
+  routeBuilder(app, db)
 
   const port = config.server.port
   app.listen(port, () => {

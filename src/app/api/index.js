@@ -1,5 +1,5 @@
 const buildSheetRoutes = require('./sheet/sheet')
 
-module.exports = function buildRoutes (app) {
-  buildSheetRoutes(app)
+module.exports = function buildRoutes (app, db) {
+  buildSheetRoutes(app, db)
 }

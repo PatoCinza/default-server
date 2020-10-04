@@ -1,3 +1,3 @@
-module.exports = {
-  port: Number(process.env.PORT) || 4000
-}
+module.exports = (env) => ({
+  port: Number(env.PORT) || 4000
+})

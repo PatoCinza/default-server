@@ -1,6 +1,7 @@
 const fs = require('fs')
 const dotenv = require('dotenv')
 const serverConfig = require('./server')
+const databaseConfig = require('./database')
 
 module.exports = function setupConfig () {
   const environment = process.env.NODE_ENV || 'development'
@@ -17,7 +18,7 @@ module.exports = function setupConfig () {
   }
 
   return {
-    server: serverConfig,
-    database: process.env.DB_HOST
+    server: serverConfig(process.env),
+    database: databaseConfig(process.env)
   }
 }
